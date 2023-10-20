@@ -14,13 +14,13 @@ for driver in championship.get_drivers():
     print(driver.get_name())
 
 search_driver = championship.get_driver("Azizbek Umarov")
-if search_driver is not None:
+if search_driver != None:
     print("Found driver:", search_driver.get_name())
 else:
     print("Driver not found.")
 
 grandprix = championship.get_grandprix("Monaco Grand Prix")
-if grandprix is not None:
+if grandprix != None:
     print("Grand Prix event:", grandprix.get_name())
 else:
     print("Grand Prix not found.")
