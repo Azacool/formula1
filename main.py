@@ -6,8 +6,8 @@ championship = Championship()
 driver1 = championship.create_driver("Azizbek Umarov")
 driver2 = championship.create_driver("Abdusattor Jumaev")
 
-grandprix1 = championship.define_grandprix("Monaco Grand Prix")
-grandprix2 = championship.define_grandprix("Italian Grand Prix")
+grandprix1 = championship.define_grandprix("Toshkent Grand Prix")
+grandprix2 = championship.define_grandprix("Samarkand Grand Prix")
 
 print("Drivers in the championship:")
 for driver in championship.get_drivers():
@@ -19,7 +19,7 @@ if search_driver != None:
 else:
     print("Driver not found.")
 
-grandprix = championship.get_grandprix("Monaco Grand Prix")
+grandprix = championship.get_grandprix("Toshkent Grand Prix")
 if grandprix != None:
     print("Grand Prix event:", grandprix.get_name())
 else:
