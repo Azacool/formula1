@@ -1,10 +1,13 @@
 from driver import Driver
-from grand_prix import GrandPrix
+from grand_prix import GP
+from time_gpexample1 import TimeGP
 
 class Championship:
     def __init__(self):
         self.drivers:list[Driver] = []
-        self.grand_prix_list:list[GrandPrix] = []
+        self.grand_prix_list:list[GP]= []
+        self._end_time_list:list[TimeGP]=[]
+    
 
     def create_driver(self, name):
         driver = Driver(name)
@@ -21,7 +24,7 @@ class Championship:
         return None 
 
     def define_grandprix(self, name):
-        grand_prix = GrandPrix(name)
+        grand_prix = GP(name)
         self.grand_prix_list.append(grand_prix)
         return grand_prix
 
@@ -30,3 +33,18 @@ class Championship:
             if grand_prix.get_name() == grand_prix_name:
                 return grand_prix
         return None  
+
+
+    def get_championship_ranking(self):
+        driver_points = {}
+        for grand_prix in self.grand_prix_list:
+            for time_gp in grand_prix._race_results:
+                driver = time_gp._driver
+                points = grand_prix.get_points(driver)
+                if driver in driver_points:
+                    driver_points[driver] += points
+                else:
+                    driver_points[driver] = points
+
+        sorted_drivers = sorted(driver_points.keys(), key=lambda driver: driver_points[driver], reverse=True)
+        return sorted_drivers
